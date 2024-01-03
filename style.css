@@ -65,7 +65,7 @@ nav a:hover{
     margin-left: 25%;
     margin-top: 2%;
     border-radius: 10px;
-    width: 250px;
+    width: 0px;
 }
 .close {
     color: #fff;
