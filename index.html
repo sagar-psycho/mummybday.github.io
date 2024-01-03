@@ -101,7 +101,7 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-        <h3 style="margin-left: 10px; margin-top: 4%;" id="Favourite">All time <i><b>Favourite </b></i>photo 💛</h3>
+    <h3 style="margin-left: 10px; margin-top: 4%;" id="Favourite">All time <i><b>Favourite </b></i>photo 💛</h3>
     <div id="Favourite">
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
@@ -111,13 +111,13 @@
             </div>
             <div class="carousel-inner">
                 <div id="papa" class="carousel-item active">
-                    <img src="papa1.jpg" id="photo1"   class="d-block " alt="...">
+                    <img src="Papa1.jpg" id="photo1"   class="d-block " alt="...">
                     <div class="carousel-caption  d-none d-md-block">
                         <h5>Queen 👑</h5>
                     </div>
                 </div>
                 <div id="papa" class="carousel-item">
-                    <img src="Papa2.jpg" id="photo2"   class="d-block " alt="...">
+                    <img src="papa2.jpg" id="photo2"   class="d-block " alt="...">
                     <div class="carousel-caption  d-none d-md-block">
                         <h5>Fev 😍</h5>
                     </div>
@@ -144,8 +144,8 @@
         <div class="d-flex position-relative">
             <img src="my memory.jpg" id="photo5"  class="d-block " alt="...">
             <div>
-                <p style="margin-top: 50px; margin-right: 5px;">You are the person who celebrate my birthday </p>
-                Thanks Ra
+                <p style="margin-top: 50px; margin-right: 5px;">You are the person how celebrate my birthday </p>
+                Thanks Rey
             </div>
         </div>
         <p style="margin-left: 10px; margin-bottom: -3px;">Your the first person who belived in me and called "<u>ANNAYYA</u>".</p>
@@ -153,11 +153,38 @@
         <p style="margin-left: 10px; margin-bottom: -3px;">Thanks for being Worlds MOM 💛.</p>
         <p style="margin-left: 10px; margin-bottom: -3px;">You thought me many things.</p>
     </div>
+    <div class="sorry">
+        <h2 style="margin-left: 10px; margin-top: 30px;">Sorry</h2>
+        <p style="margin-left: 10px; margin-bottom: -3px;">Sorry for making you irritate.</p>
+        <p style="margin-left: 10px; margin-bottom: -3px;">Making everyting to feel uncomfortable.</p>
+    </div>
+    <div id="myModal" class="modal">
+        <span class="close" style="size: 290px;">&times;</span>
+        <img src="alet.png" alt="Image">
+    </div>
+    <br><br><br><br>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
 
-alert("Happy Birthday MUMMY 💛");
+var modal = document.getElementById("myModal");
+
+var span = document.getElementsByClassName("close")[0];
+
+window.onload = function() {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 
 </script>
 </html>
