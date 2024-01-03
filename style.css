@@ -1,0 +1,51 @@
+ *{
+    font-family: 'Times New Roman', Times, serif;
+}
+marquee{
+    margin-top: 10px;
+}
+nav{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 90%;
+}
+nav a{
+    text-decoration: none;
+    padding-left: 10px;
+}
+nav a:hover{
+    color: red;
+}
+#photo{
+    height: auto;
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 95%;
+}
+#photo1{
+    height: auto;
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 95%;
+}
+#photo2{
+    height: auto;
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 95%;
+}
+#Favourite{
+    margin-left: 2px;
+}
+.memory{
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.pora{
+    margin-top: 10px;
+}
+#photo5{
+    width: 250px;
+}
