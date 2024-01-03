@@ -49,9 +49,34 @@ nav a:hover{
 #photo5{
     width: 250px;
 }
-#photo30{
-    height: auto;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 1, 0.7);
+}
+.modal img {
+    display: block;
+    margin-left: 25%;
     margin-top: 2%;
     border-radius: 10px;
     width: 50%;
 }
+.close {
+    color: #fff;
+    float: right;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: #ccc;
+    text-decoration: none;
+}
+
