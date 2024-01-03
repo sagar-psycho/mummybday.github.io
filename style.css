@@ -62,10 +62,10 @@ nav a:hover{
 }
 .modal img {
     display: block;
-    margin-left: 25%;
+    margin-left: 130px;
     margin-top: 2%;
     border-radius: 10px;
-    width: 0px;
+    width: 250px;
 }
 .close {
     color: #fff;
