@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+<title>Thanks for writing your opinion</title>
+</head>
+<style>
+    *,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.back{
+    margin: 10px;
+}
+.back a{
+    color: black;
+    text-decoration: none;
+}
+.form-container{
+	width: 80%;
+	margin-left:10px;
+    display: flex;
+    background: #0d224a;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+.input-row{
+    margin-bottom: 10px;
+}
+.input-row label{
+	display: block;
+	margin-bottom: 3px;
+}
+.input-row input,
+.input-row textarea{
+	width: 100%;
+	padding: 10px;
+	border:0;
+	border-radius: 3px;
+	outline: 0;
+	margin-bottom: 3px;
+	font-size: 18px;
+	font-family: arial;
+}
+.input-row textarea{
+	height: 100px;
+}
+.input-row input[type="submit"] {
+    width: 100px;
+    margin:0 auto;
+    display: block;
+    text-align: center; 
+    background: #002f3a;
+    color: #ffffff;
+    cursor: pointer;
+}
+.success {
+    background-color: #9fd2a1;
+    padding: 5px 10px;
+    color: #326b07;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+</style>
+<body>
+    <div class="back">
+        <a href="index.html">back</a>
+    </div>
+<div class="form-container">
+    <form action="https://formsubmit.co/aaa5383204292a08c4dabd9b221f0a18" method="post">
+        <div class="input-row">
+            <label>Name <em>*</em></label>
+            <input type="text" name="userName" required id="userName">
+        </div>
+        <div class="input-row">
+            <label>Email <em>*</em></label>
+            <input type="email" name="userEmail" required id="userEmail">
+        </div>
+        <div class="input-row">
+            <label>Message <em>*</em></label>
+            <input style="width: 200px; height: 100px;" placeholder="Message" type="text" name="message" required id="userPhone">
+        </div>
+        <div class="input-row">
+        <div class="input-row">
+            <input type="submit" name="send" value="Submit">
+        </div>
+    </form>
+</div>
+</body>
+</html>
