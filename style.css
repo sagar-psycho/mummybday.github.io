@@ -107,3 +107,11 @@ nav a:hover{
     margin-top: 10%;
     margin-left: px;
 }
+#photo10{
+    height: auto;
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 300px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
