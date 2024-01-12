@@ -1,3 +1,5 @@
+alert("Don't forgot to give your name and number");
+
 let usernameRef = document.getElementById("username");
 let passwordRef = document.getElementById("password");
 let eyeL = document.querySelector(".eyeball-l");
