@@ -13,7 +13,7 @@
     margin: 10px;
 }
 .back a{
-    color: black;
+    color: blue;
     text-decoration: none;
 }
 .form-container{
@@ -54,25 +54,91 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.dark-mode {
+    background-color: #0d1021;
+    color: #ffffff;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    float: right;
+    width: 55px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 4px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 39px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
 </style>
 <body>
+    <header>
+        <label class="switch">
+            <input type="checkbox" id="darkbtn">
+            <span class="slider round"></span>
+        </label>
+    </header>
     <div class="back">
         <a href="index.html">Back</a>
     </div>
 <div class="form-container">
-    <form action="https://formsubmit.co/aaa5383204292a08c4dabd9b221f0a18" method="post">
+    <form action="https://docs.google.com/spreadsheets/d/1_6hJcrwZDIUP8AboY6NWIsAmrY0DoUzT-tMCZxNdwqo/edit#gid=0" method="POST" id="sheetdb">
         <h2>Review</h2>
         <div class="input-row">
             <label>Name <em>*</em></label>
-            <input type="text" name="userName" required id="userName">
+            <input type="text" name="data[Name]" required id="userName">
         </div>
         <div class="input-row">
             <label>Number <em>*</em></label>
-            <input type="text" name="userEmail" required id="userEmail">
+            <input type="text" name="data[Number]" required id="userEmail">
         </div>
         <div class="input-row">
             <label>Your Opinion<em>*</em></label>
-            <input style="width: 210px; height: 90px;" placeholder="Be Free" type="text" name="message" required id="userPhone">
+            <input style="width: 210px; height: 90px;" placeholder="Be Free" type="text" name="data[Message]" required id="userPhone">
         </div>
         <div class="input-row">
             <button>Send</button>
@@ -80,4 +146,35 @@
     </form>
 </div>
 </body>
+<script>
+    const darkbtn = document.getElementById('darkbtn');
+        const body = document.body;
+
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkbtn.checked = true;
+        }
+
+        darkbtn.addEventListener('change', () => {
+            if (darkbtn.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        var form=document.getElementById("sheetdb")
+form.addEventListener("submit", e=>{
+  e.preventDefault();
+  fetch(form.action,{
+    method:"POST",
+    body: new FormData(document.getElementById("sheetdb")),
+  }).then((html) => {
+    window.open('Step 2.html');
+  });
+})
+</script>
 </html>
