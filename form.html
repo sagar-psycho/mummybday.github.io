@@ -126,7 +126,7 @@ input:checked+.slider:before {
         <a href="index.html">Back</a>
     </div>
 <div class="form-container">
-    <form action="https://docs.google.com/spreadsheets/d/1_6hJcrwZDIUP8AboY6NWIsAmrY0DoUzT-tMCZxNdwqo/edit#gid=0" method="POST" id="sheetdb">
+    <form action="https://sheetdb.io/api/v1/khjaphhv95mxo" method="POST" id="sheetdb">
         <h2>Review</h2>
         <div class="input-row">
             <label>Name <em>*</em></label>
@@ -134,7 +134,7 @@ input:checked+.slider:before {
         </div>
         <div class="input-row">
             <label>Number <em>*</em></label>
-            <input type="text" name="data[Number]" required id="userEmail">
+            <input type="number" name="data[Number]" required id="userEmail">
         </div>
         <div class="input-row">
             <label>Your Opinion<em>*</em></label>
@@ -166,15 +166,16 @@ input:checked+.slider:before {
                 localStorage.setItem('darkMode', 'disabled');
             }
         });
+        //form
         var form=document.getElementById("sheetdb")
-form.addEventListener("submit", e=>{
-  e.preventDefault();
-  fetch(form.action,{
-    method:"POST",
-    body: new FormData(document.getElementById("sheetdb")),
-  }).then((html) => {
-    window.open('main.html');
-  });
+        form.addEventListener("submit", e=>{
+        e.preventDefault();
+        fetch(form.action,{
+            method:"POST",
+            body: new FormData(document.getElementById("sheetdb")),
+        }).then((html) => {
+            window.open('main.html');
+        });
 })
 </script>
 </html>
