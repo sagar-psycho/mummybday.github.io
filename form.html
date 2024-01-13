@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
 <title>Thanks for writing your opinion</title>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <style>
 *{
@@ -11,6 +12,7 @@
 }
 .back{
     margin: 10px;
+    margin-bottom: 10px;
 }
 .back a{
     color: blue;
@@ -63,9 +65,10 @@
     position: relative;
     display: inline-block;
     margin-top: 10px;
-    float: right;
+    float : right;
     width: 55px;
     height: 30px;
+    margin-bottom: 10px;
 }
 
 .switch input {
@@ -116,34 +119,36 @@ input:checked+.slider:before {
 }
 </style>
 <body>
-    <header>
-        <label class="switch">
-            <input type="checkbox" id="darkbtn">
-            <span class="slider round"></span>
-        </label>
-    </header>
-    <div class="back">
-        <a href="main.html">Back</a>
-    </div>
-<div class="form-container">
-    <form action="https://sheetdb.io/api/v1/khjaphhv95mxo" method="POST" id="sheetdb">
-        <h2>Review</h2>
-        <div class="input-row">
-            <label>Name <em>*</em></label>
-            <input type="text" name="data[Name]" required id="userName">
+    <div id="content" style="display: none;">
+        <header>
+            <label class="switch">
+                <input type="checkbox" id="darkbtn">
+                <span class="slider round"></span>
+            </label>
+        </header>
+        <div class="back">
+            <a href="main.html">Back</a>
         </div>
-        <div class="input-row">
-            <label>Number <em>*</em></label>
-            <input type="number" name="data[Number]" required id="userEmail">
+        <div class="form-container">
+            <form action="https://sheetdb.io/api/v1/khjaphhv95mxo" method="POST" id="sheetdb">
+                <h2>Review</h2>
+                <div class="input-row">
+                    <label>Name <em>*</em></label>
+                    <input type="text" name="data[Name]" required id="userName">
+                </div>
+                <div class="input-row">
+                    <label>Number <em>*</em></label>
+                    <input type="number" name="data[Number]" required id="userEmail">
+                </div>
+                <div class="input-row">
+                    <label>Your Opinion<em>*</em></label>
+                    <input style="width: 210px; height: 90px;" placeholder="Be Free" type="text" name="data[Message]" required id="userPhone">
+                </div>
+                <div class="input-row">
+                    <button>Send</button>
+                </div>
+            </form>
         </div>
-        <div class="input-row">
-            <label>Your Opinion<em>*</em></label>
-            <input style="width: 210px; height: 90px;" placeholder="Be Free" type="text" name="data[Message]" required id="userPhone">
-        </div>
-        <div class="input-row">
-            <button>Send</button>
-        </div>
-    </form>
 </div>
 </body>
 <script>
@@ -166,7 +171,7 @@ input:checked+.slider:before {
                 localStorage.setItem('darkMode', 'disabled');
             }
         });
-        //form
+        //Form Submit
         var form=document.getElementById("sheetdb")
         form.addEventListener("submit", e=>{
         e.preventDefault();
@@ -177,5 +182,32 @@ input:checked+.slider:before {
             window.open('main.html');
         });
 })
+        //Loading
+        $(document).ready(function () {
+    setTimeout(function () {
+        $("#content").fadeIn(2000);
+    }, 200);
+});
+    //Auto logout
+    
+let inactivityTime = 0;
+
+function resetTimer() {
+    inactivityTime = 0;
+}
+
+function checkInactivity() {
+    inactivityTime++;
+    if (inactivityTime >= 120) {
+    alert("Place log in again");
+    window.location.href = "index.html";
+}
+}
+
+document.addEventListener("mousemove", resetTimer);
+document.addEventListener("keydown", resetTimer);
+
+setInterval(checkInactivity, 1000);
+
 </script>
 </html>
