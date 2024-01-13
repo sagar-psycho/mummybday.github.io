@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mummy</title>
+    <title>Happy Birthday Mummy</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="papa1.jpg">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+    <div id="content" style="display: none;">
     <header>
         <label class="switch">
             <input type="checkbox" id="darkbtn">
@@ -36,7 +38,7 @@
                 <img src="memory 2024.jpg" id="photo1"   class="d-block ">
             </div>
             <div class="carousel-item">
-                <p id="photo11">Hope you will have best year ahead <b>MUMMY</b> and your bond will continue this year more much. Never feel alone mummy im there for you at anytime.</p>
+                <p id="photo11">Hope you will have best year ahead <b>MUMMY</b> and our bond will continue this year more much. Never feel alone mummy i'm there for you at anytime.</p>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -222,7 +224,7 @@
     <div id="myModal" class="modal">
         <span class="close" >&times;</span>
         <img src="alet.png" alt="Image">
-        <p style="color: white; text-align: center;">Happy Birthday <b>Mummy</b> &#128155;</p>
+        <p style="color: white; text-align: center; margin-left: 20px;">Happy Birthday <b>Mummy</b> &#128155;</p>
     </div>
     <div class="review">
         <p>
@@ -230,12 +232,14 @@
         </p>
         <p>You can also share your feelings by <a href="form.html">Clicking here</a> .</p>
     </div>
+    
     <br>
     <a href="index.html"><button style="margin-left: 50px;margin-bottom: 50px; background-color: pink; border: none; border-radius: 10px; padding: 5px; width: 100px;">Log out</button></a>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script>
-
+// pop up
 var modal = document.getElementById("myModal");
 
 var span = document.getElementsByClassName("close")[0];
@@ -273,5 +277,12 @@ const darkbtn = document.getElementById('darkbtn');
                 localStorage.setItem('darkMode', 'disabled');
             }
         });
+// loading
+    $(document).ready(function () {
+    setTimeout(function () {
+        $("#content").fadeIn(2000);
+    }, 200);
+});
+                                            
 </script>
 </html>
