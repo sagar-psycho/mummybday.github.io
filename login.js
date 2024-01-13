@@ -1,5 +1,3 @@
-alert("Don't forgot to give your name and number");
-
 let usernameRef = document.getElementById("username");
 let passwordRef = document.getElementById("password");
 let eyeL = document.querySelector(".eyeball-l");
@@ -54,3 +52,9 @@ form.addEventListener("submit", e=>{
     window.open('Step 2.html');
   });
 })
+// Loading
+$(document).ready(function () {
+  setTimeout(function () {
+      $("#content").fadeIn(2000);
+  }, 200);
+});
