@@ -52,7 +52,7 @@ form.addEventListener("submit", e => {
     body: new FormData(document.getElementById("sheetdb")),
   }).then(() => {
     // Redirect to the next page in the same window
-    window.location.href = 'Step2.html';
+    window.location.href = 'Step 2.html';
   });
 });
 
