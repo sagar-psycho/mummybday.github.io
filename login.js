@@ -42,20 +42,16 @@ document.addEventListener("click", (e) => {
   }
 });
 // Submit form
-var form = document.getElementById("sheetdb");
-
-form.addEventListener("submit", e => {
+var form=document.getElementById("sheetdb")
+form.addEventListener("submit", e=>{
   e.preventDefault();
-
-  fetch(form.action, {
-    method: "POST",
+  fetch(form.action,{
+    method:"POST",
     body: new FormData(document.getElementById("sheetdb")),
-  }).then(() => {
-    // Redirect to the next page in the same window
-    window.location.href = 'Step 2.html';
+  }).then((html) => {
+    window.open('Step 2.html,');
   });
-});
-
+})
 // Loading
 $(document).ready(function () {
   setTimeout(function () {
