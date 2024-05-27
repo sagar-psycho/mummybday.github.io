@@ -1,5 +1,5 @@
 #chat-container {
-    width: 300px;
+    width: 80%;
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -19,11 +19,14 @@
     border: 1px solid #ccc;
     border-radius: 3px;
 }
-
+.center-btns{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 #speech-button, #search-button {
     padding: 5px 10px;
     margin-left: 5px;
-    margin-top: 10px;
     color: white;
     border: none;
     border-radius: 3px;
