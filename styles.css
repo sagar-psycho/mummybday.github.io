@@ -23,7 +23,7 @@
 #search-history{
     margin: 10px;
 }
-#chat-container, .history {
+#chat-container{
     width: 80%;
     margin: 0 auto;
     border: 1px solid #ccc;
