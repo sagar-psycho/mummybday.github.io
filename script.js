@@ -1,9 +1,9 @@
-// script.js
 document.addEventListener("DOMContentLoaded", function() {
     const userInput = document.getElementById("user-input");
     const chatHistory = document.getElementById("chat-history");
     const speechButton = document.getElementById("speech-button");
     const searchButton = document.getElementById("search-button");
+    const clearHistoryButton = document.getElementById("clear-history");
 
     function appendMessage(message, sender) {
         const messageElement = document.createElement("div");
@@ -34,6 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "youtube":
                     window.open("https://www.youtube.com", "_blank");
                     return "Opening YouTube...";
+                case "github":
+                    window.open("https://github.com", "_blank");
+                    return "Opening GitHub...";
+                case "hi":
+                    return "Welcome to SAGAR ai, how can I help you?";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
                     return "Searching on Google...";
@@ -45,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     speechButton.addEventListener("click", function() {
-        appendMessage("Please speak to SAGAR AI...", "bot");
+        appendMessage("SAGAR ai Is ACTIVATED...", "bot");
         
         const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
         recognition.lang = "en-US";
@@ -85,7 +90,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const inputText = userInput.value.trim().toLowerCase();
         if (inputText === "asking for sagar ai") {
             appendMessage("How can I assist you?", "bot");
-            userInput.value = ""; 
+            userInput.value = "";
+        }
+    });
+
+    clearHistoryButton.addEventListener("click", function() {
+        while (chatHistory.firstChild) {
+            chatHistory.removeChild(chatHistory.firstChild);
         }
     });
 });
