@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatHistory = document.getElementById("chat-history");
     const speechButton = document.getElementById("speech-button");
     const searchButton = document.getElementById("search-button");
-    const clearHistoryButton = document.getElementById("clear-history");
+    const clearHistoryChatButton = document.getElementById("clear-history-chat");
+    const clearHistoryHistoryButton = document.getElementById("clear-history-history");
+    const searchHistoryContainer = document.getElementById("search-history");
 
     function appendMessage(message, sender) {
         const messageElement = document.createElement("div");
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     window.open("https://github.com", "_blank");
                     return "Opening GitHub...";
                 case "hi":
-                    return "Welcome to SAGAR ai, how can I help you?";
+                    return "Welcome to SAGAR AI, how can I help you?";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
                     return "Searching on Google...";
@@ -50,17 +52,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     speechButton.addEventListener("click", function() {
-        appendMessage("SAGAR ai Is ACTIVATED...", "bot");
-        
-        const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+        appendMessage("SAGAR AI Is ACTIVATED...", "bot");
+
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = "en-US";
         recognition.start();
-        
+
         recognition.onresult = function(event) {
             const speechResult = event.results[0][0].transcript;
             appendMessage(speechResult, "user");
             const response = processInput(speechResult);
             appendMessage(response, "bot");
+            addToSearchHistory(speechResult);
         };
     });
 
@@ -70,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
             appendMessage(inputText, "user");
             const response = processInput(inputText);
             appendMessage(response, "bot");
+            addToSearchHistory(inputText);
             userInput.value = "";
         }
     });
@@ -81,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 appendMessage(inputText, "user");
                 const response = processInput(inputText);
                 appendMessage(response, "bot");
+                addToSearchHistory(inputText);
                 userInput.value = "";
             }
         }
@@ -94,9 +99,44 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    clearHistoryButton.addEventListener("click", function() {
+    clearHistoryChatButton.addEventListener("click", function() {
         while (chatHistory.firstChild) {
             chatHistory.removeChild(chatHistory.firstChild);
         }
+        clearSearchHistory();
     });
+
+    clearHistoryHistoryButton.addEventListener("click", function() {
+        clearSearchHistory();
+    });
+
+    // Load search history from local storage on page load
+    loadSearchHistory();
+
+    // Add search history to local storage and display
+    function addToSearchHistory(query) {
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = query;
+        searchHistoryContainer.appendChild(listItem);
+        saveSearchHistory();
+    }
+
+    function saveSearchHistory() {
+        const historyItems = [];
+        searchHistoryContainer.querySelectorAll("li").forEach(item => {
+            historyItems.push(item.textContent);
+        });
+        localStorage.setItem("searchHistory", JSON.stringify(historyItems));
+    }
+
+    function loadSearchHistory() {
+        const storedHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+        storedHistory.forEach(item => addToSearchHistory(item));
+    }
+
+    function clearSearchHistory() {
+        localStorage.removeItem("searchHistory");
+        searchHistoryContainer.innerHTML = "";
+    }
 });
