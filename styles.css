@@ -48,6 +48,9 @@
     #user-input{
         width: calc(80% - 22px);
     }
+    .history{
+    width: 80%;
+    }
 }
 .center-btns{
     display: flex;
