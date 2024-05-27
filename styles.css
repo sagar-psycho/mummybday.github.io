@@ -1,3 +1,21 @@
+.open-ai{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+#clear-history-history{
+    float: right;
+    margin-top: -35px;
+}
+.history{
+    width: 20%;
+    overflow: scroll;
+    padding: 10px;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 #chat-container {
     width: 80%;
     margin: 0 auto;
@@ -14,7 +32,7 @@
 }
 
 #user-input {
-    width: calc(100% - 22px);
+    width: calc(30% - 22px);
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
