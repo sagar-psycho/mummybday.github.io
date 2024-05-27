@@ -3,6 +3,11 @@
     gap: 20px;
     padding: 20px;
 }
+@media (max-width: 786px) {
+    .open-ai{
+        display: block;
+    }
+}
 #clear-history-history{
     float: right;
     margin-top: -35px;
@@ -15,8 +20,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-#chat-container {
+#search-history{
+    margin: 10px;
+}
+#chat-container, .history {
     width: 80%;
     margin: 0 auto;
     border: 1px solid #ccc;
@@ -36,6 +43,11 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+}
+@media (max-width: 789px) {
+    #user-input{
+        width: calc(80% - 22px);
+    }
 }
 .center-btns{
     display: flex;
