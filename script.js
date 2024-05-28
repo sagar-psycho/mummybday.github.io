@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "github":
                     window.open("https://github.com", "_blank");
                     return "Opening GitHub...";
-                case "hi":
+                case "Hello":
                     return "Welcome to SAGAR AI, how can I help you?";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
@@ -103,17 +103,16 @@ document.addEventListener("DOMContentLoaded", function() {
         while (chatHistory.firstChild) {
             chatHistory.removeChild(chatHistory.firstChild);
         }
-        clearSearchHistory();
+        localStorage.removeItem("chatHistory");
     });
 
     clearHistoryHistoryButton.addEventListener("click", function() {
         clearSearchHistory();
     });
 
-    // Load search history from local storage on page load
     loadSearchHistory();
+    loadChatHistory();
 
-    // Add search history to local storage and display
     function addToSearchHistory(query) {
         const listItem = document.createElement("li");
         listItem.className = "list-group-item";
@@ -138,5 +137,60 @@ document.addEventListener("DOMContentLoaded", function() {
     function clearSearchHistory() {
         localStorage.removeItem("searchHistory");
         searchHistoryContainer.innerHTML = "";
+    }
+
+    function saveChatHistory() {
+        const chatItems = [];
+        chatHistory.querySelectorAll(".message").forEach(item => {
+            chatItems.push({
+                text: item.textContent,
+                sender: item.classList.contains("user") ? "user" : "bot"
+            });
+        });
+        localStorage.setItem("chatHistory", JSON.stringify(chatItems));
+    }
+
+    function loadChatHistory() {
+        const storedChatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
+        storedChatHistory.forEach(item => {
+            appendMessage(item.text, item.sender);
+        });
+    }
+
+    function appendMessage(message, sender) {
+        const messageElement = document.createElement("div");
+        messageElement.textContent = message;
+        messageElement.classList.add("message", sender);
+        chatHistory.appendChild(messageElement);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function processInput(input) {
+        if (input.toLowerCase().startsWith("open")) {
+            const command = input.toLowerCase().replace("open", "").trim();
+            switch (command) {
+                case "google":
+                    window.open("https://www.google.com", "_blank");
+                    return "Opening Google...";
+                case "whatsapp":
+                    window.open("https://web.whatsapp.com", "_blank");
+                    return "Opening WhatsApp...";
+                case "instagram":
+                    window.open("https://www.instagram.com", "_blank");
+                    return "Opening Instagram...";
+                case "youtube":
+                    window.open("https://www.youtube.com", "_blank");
+                    return "Opening YouTube...";
+                case "github":
+                    window.open("https://github.com", "_blank");
+                    return "Opening GitHub...";
+                default:
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
+                    return "Searching on Google...";
+            }
+        } else {
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
+            return "Searching on Google...";
+        }
     }
 });
