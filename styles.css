@@ -97,3 +97,7 @@
         transform: translateX(0);
     }
 }
+
+#changingText{
+    color: red;
+}
