@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     speechButton.addEventListener("click", function() {
-        appendMessage("SAGAR AI Is ACTIVATED...", "bot");
+        appendMessage("SAGAR ai is activated...", "bot");
 
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         recognition.lang = "en-US";
@@ -88,14 +88,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 addToSearchHistory(inputText);
                 userInput.value = "";
             }
-        }
-    });
-
-    userInput.addEventListener("input", function(event) {
-        const inputText = userInput.value.trim().toLowerCase();
-        if (inputText === "asking for sagar ai") {
-            appendMessage("How can I assist you?", "bot");
-            userInput.value = "";
         }
     });
 
@@ -184,6 +176,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "github":
                     window.open("https://github.com", "_blank");
                     return "Opening GitHub...";
+                    case "about sagar":
+                        window.open("https://sagar-psycho.github.io/portfolio.responsive/", "_blank");
+                        return "Opening GitHub...";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
                     return "Searching on Google...";
@@ -194,3 +189,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+
+
+window.onload = function() {
+    var changingText = document.getElementById("changingText");
+    var texts = [
+    "Welcome to Sagar ai"
+    ];
+    var index = 0;
+    var letterIndex = 0;
+    
+    function typeText() {
+    if (letterIndex < texts[index].length) {
+        changingText.textContent += texts[index].charAt(letterIndex);
+        letterIndex++;
+        setTimeout(typeText, 100); // Speed of typing (100 milliseconds)
+    } else {
+        setTimeout(eraseText, 2000); // Delay before erasing (2000 milliseconds)
+    }
+    }
+    typeText(); // Start typing
+};
