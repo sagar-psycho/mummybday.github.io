@@ -15,7 +15,6 @@
 .history{
     width: 20%;
     margin: 0 auto;
-    overflow: scroll;
     padding: 10px;
     margin-top: 50px;
     border: 1px solid #ccc;
@@ -23,6 +22,9 @@
 }
 #search-history{
     margin: 10px;
+    overflow-y: scroll;
+    height: 250px;
+    scrollbar-color: red;
 }
 #chat-container{
     width: 80%;
