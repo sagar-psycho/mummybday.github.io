@@ -176,9 +176,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "github":
                     window.open("https://github.com", "_blank");
                     return "Opening GitHub...";
-                    case "about sagar":
-                        window.open("https://sagar-psycho.github.io/portfolio.responsive/", "_blank");
-                        return "Opening GitHub...";
+                case "about sagar":
+                    window.open("https://sagar-psycho.github.io/portfolio.responsive/", "_blank");
+                    return "Opening about SAGAR...";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
                     return "Searching on Google...";
@@ -204,10 +204,35 @@ window.onload = function() {
     if (letterIndex < texts[index].length) {
         changingText.textContent += texts[index].charAt(letterIndex);
         letterIndex++;
-        setTimeout(typeText, 100); // Speed of typing (100 milliseconds)
+        setTimeout(typeText, 150);
     } else {
-        setTimeout(eraseText, 2000); // Delay before erasing (2000 milliseconds)
+        setTimeout(eraseText, 2000);
     }
     }
     typeText(); // Start typing
 };
+
+
+//Hey SAGAR
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const speechButton = document.getElementById('speech-button');
+
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+            if (transcript === 'hey sagar') {
+                speechButton.click();
+            }
+        };
+
+        recognition.start();
+    } else {
+        console.log("Speech recognition not supported in this browser.");
+    }
+});
