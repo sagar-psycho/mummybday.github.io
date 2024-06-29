@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatHistory = document.getElementById("chat-history");
     const speechButton = document.getElementById("speech-button");
     const searchButton = document.getElementById("search-button");
-    const clearHistoryChatButton = document.getElementById("clear-history-chat");
     const clearHistoryHistoryButton = document.getElementById("clear-history-history");
     const searchHistoryContainer = document.getElementById("search-history");
+    const deletePop = document.getElementById("delete-pop");
 
     function appendMessage(message, sender) {
         const messageElement = document.createElement("div");
@@ -13,11 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
         messageElement.classList.add("message", sender);
         chatHistory.appendChild(messageElement);
         chatHistory.scrollTop = chatHistory.scrollHeight;
-        if (sender === "bot") {
-            messageElement.classList.add("incoming");
-        } else {
-            messageElement.classList.add("outgoing");
-        }
     }
 
     function processInput(input) {
@@ -39,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "github":
                     window.open("https://github.com", "_blank");
                     return "Opening GitHub...";
-                case "Hello":
-                    return "Welcome to SAGAR AI, how can I help you?";
+                case "about sagar":
+                    window.open("https://sagar-psycho.github.io/portfolio.responsive/", "_blank");
+                    return "Opening about SAGAR...";
                 default:
                     window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
                     return "Searching on Google...";
@@ -91,19 +87,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    clearHistoryChatButton.addEventListener("click", function() {
-        while (chatHistory.firstChild) {
-            chatHistory.removeChild(chatHistory.firstChild);
-        }
-        localStorage.removeItem("chatHistory");
-    });
-
     clearHistoryHistoryButton.addEventListener("click", function() {
-        clearSearchHistory();
+        deletePop.style.display = "block";
     });
 
-    loadSearchHistory();
-    loadChatHistory();
+    document.querySelector(".cancel-btn").addEventListener("click", function() {
+        deletePop.style.display = "none";
+    });
+
+    document.querySelector(".yes-btn").addEventListener("click", function() {
+        clearChatHistory();
+        clearSearchHistory();
+        deletePop.style.display = "none";
+    });
 
     function addToSearchHistory(query) {
         const listItem = document.createElement("li");
@@ -131,6 +127,11 @@ document.addEventListener("DOMContentLoaded", function() {
         searchHistoryContainer.innerHTML = "";
     }
 
+    function clearChatHistory() {
+        localStorage.removeItem("chatHistory");
+        chatHistory.innerHTML = "";
+    }
+
     function saveChatHistory() {
         const chatItems = [];
         chatHistory.querySelectorAll(".message").forEach(item => {
@@ -149,90 +150,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    function appendMessage(message, sender) {
-        const messageElement = document.createElement("div");
-        messageElement.textContent = message;
-        messageElement.classList.add("message", sender);
-        chatHistory.appendChild(messageElement);
-        chatHistory.scrollTop = chatHistory.scrollHeight;
-    }
-
-    function processInput(input) {
-        if (input.toLowerCase().startsWith("open")) {
-            const command = input.toLowerCase().replace("open", "").trim();
-            switch (command) {
-                case "google":
-                    window.open("https://www.google.com", "_blank");
-                    return "Opening Google...";
-                case "whatsapp":
-                    window.open("https://web.whatsapp.com", "_blank");
-                    return "Opening WhatsApp...";
-                case "instagram":
-                    window.open("https://www.instagram.com", "_blank");
-                    return "Opening Instagram...";
-                case "youtube":
-                    window.open("https://www.youtube.com", "_blank");
-                    return "Opening YouTube...";
-                case "github":
-                    window.open("https://github.com", "_blank");
-                    return "Opening GitHub...";
-                case "about sagar":
-                    window.open("https://sagar-psycho.github.io/portfolio.responsive/", "_blank");
-                    return "Opening about SAGAR...";
-                default:
-                    window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
-                    return "Searching on Google...";
-            }
-        } else {
-            window.open(`https://www.google.com/search?q=${encodeURIComponent(input)}`, "_blank");
-            return "Searching on Google...";
-        }
-    }
+    loadSearchHistory();
+    loadChatHistory();
 });
-
-
 
 window.onload = function() {
     var changingText = document.getElementById("changingText");
-    var texts = [
-    "Welcome to Sagar ai"
-    ];
+    var texts = ["Welcome to Sagar ai"];
     var index = 0;
     var letterIndex = 0;
-    
+
     function typeText() {
-    if (letterIndex < texts[index].length) {
-        changingText.textContent += texts[index].charAt(letterIndex);
-        letterIndex++;
-        setTimeout(typeText, 150);
-    } else {
-        setTimeout(eraseText, 2000);
+        if (letterIndex < texts[index].length) {
+            changingText.textContent += texts[index].charAt(letterIndex);
+            letterIndex++;
+            setTimeout(typeText, 150);
+        }
     }
-    }
-    typeText(); // Start typing
+    typeText(); 
 };
-
-
-//Hey SAGAR
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const speechButton = document.getElementById('speech-button');
-
-    if ('webkitSpeechRecognition' in window) {
-        const recognition = new webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = false;
-        recognition.lang = 'en-US';
-
-        recognition.onresult = (event) => {
-            const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
-            if (transcript === 'hey sagar') {
-                speechButton.click();
-            }
-        };
-
-        recognition.start();
-    } else {
-        console.log("Speech recognition not supported in this browser.");
-    }
-});
